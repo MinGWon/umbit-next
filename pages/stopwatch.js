@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from "react";
-import "../styles/stopwatch.css";
+import Header from "../components/Header";
 
 
 export default function Stopwatch() {
 
 
-    const [time, setTime] = useState(0);
+    const [time, setTime] = useState(3333000);
     const [running, setRunning] = useState(false);
-    const [currentStatus, setCurrentStatus] = useState(0);
+    const [currentStatus, setCurrentStatus] = useState("공부 준비중...");
     useEffect(() => {
         let interval;
         if (running) {
@@ -35,18 +35,22 @@ export default function Stopwatch() {
     }
 
     return (
-        <div className="stopwatch">
-            <div className="numbers">
-                <span>{("0" + Math.floor((time / 60000) % 60)).slice(-2)}:</span>
-                <span>{("0" + Math.floor((time / 1000) % 60)).slice(-2)}:</span>
-                <span>{("0" + ((time / 10) % 100)).slice(-2)}</span>
-                <br />
-                <p>{currentStatus}</p>
-            </div>
-            <div className="buttons">
-                <button onClick={startClickButton}>공부시작!</button>
-                <button onClick={pauseClickButton}>잠깐 쉬기</button>
-                <button onClick={initClickButton}>초기화</button>
+        <div>
+            <Header />
+            <div className="stopwatchBody">
+              <div className="numbers">
+                  <span>{("0" + Math.floor((time / 3600000) % 60)).slice(-2)}:</span>
+                  <span>{("0" + Math.floor((time / 60000) % 60)).slice(-2)}:</span>
+                  <span>{("0" + Math.floor((time / 1000) % 60)).slice(-2)}</span>
+
+                   <br />
+                    <p>{currentStatus}</p>
+                </div>
+                <div className="buttons">
+                    <button className="snip1535" onClick={startClickButton}>공부시작!</button>
+                    <button className="snip1535" onClick={pauseClickButton}>잠깐 쉬기</button>
+                    <button className="snip1535" onClick={initClickButton}>초기화</button>
+                </div>
             </div>
         </div>
     )
